@@ -74,5 +74,38 @@ class LinkedList {
       return;
     }
     previousNode.next = currNode.next;
+    console.log('remove');
+  }
+
+  insertBefore(newNodeValue, targetNodeValue) {
+    // if list is empty return null(end)
+    if (this.head === null) {
+      return null;
+    }
+    // loop through the list to find current and previous nodes
+    // if node that has value equal to the target, that node is the current
+    // Node and the one before it is the previous Node
+    let currentNode = this.head;
+    let previousNode = this.head;
+    while (currentNode !== null && currentNode.value !== targetNodeValue) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+
+    if (currentNode === null) {
+      console.log('fuck the target');
+    }
+
+    previousNode.next = newNodeValue;
+  }
+
+  insertAfter() {
+
+  }
+
+  insertAt() {
+
   }
 }
+
+module.exports = LinkedList;
