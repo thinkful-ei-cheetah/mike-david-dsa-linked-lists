@@ -140,6 +140,20 @@ class LinkedList {
   }
 }
 
+//3.
+function display(list){
+  if(!list.head){
+    return null;
+  }
+  let listArray = [];
+  let currentNode = list.head;
+  while(currentNode !== null){
+    listArray.push(currentNode.value);
+    currentNode = currentNode.next;
+  }
+  return listArray;
+}
+
 
 function main() {
   let SLL = new LinkedList();
@@ -152,10 +166,11 @@ function main() {
   SLL.insertAt('Kat', 3);
   SLL.insertAfter('Hotdog', 'Helo');
   SLL.insertBefore('Athena', 'Boomer');
+  display(SLL);
   return SLL;
 }
 console.log(main());
-
+console.log(display());
 
 
 module.exports = LinkedList;
