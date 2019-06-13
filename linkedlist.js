@@ -141,18 +141,18 @@ class LinkedList {
 }
 
 //3.
-function display(list){
-  if(!list.head){
-    return null;
-  }
-  let listArray = [];
-  let currentNode = list.head;
-  while(currentNode !== null){
-    listArray.push(currentNode.value);
-    currentNode = currentNode.next;
-  }
-  return listArray;
-}
+// function display(list){
+//   if(!list.head){
+//     return null;
+//   }
+//   let listArray = [];
+//   let currentNode = list.head;
+//   while(currentNode !== null){
+//     listArray.push(currentNode.value);
+//     currentNode = currentNode.next;
+//   }
+//   return listArray;
+// }
 
 
 function main() {
@@ -166,11 +166,11 @@ function main() {
   SLL.insertAt('Kat', 3);
   SLL.insertAfter('Hotdog', 'Helo');
   SLL.insertBefore('Athena', 'Boomer');
-  display(SLL);
+  // display(SLL);
   return SLL;
 }
 console.log(main());
-console.log(display());
+//console.log(display());
 
 
 module.exports = LinkedList;
