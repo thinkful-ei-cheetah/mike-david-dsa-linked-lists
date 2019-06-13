@@ -8,11 +8,13 @@ class _Node {
   }
 }
 
+
 class DoubleLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
   }
+
 
   insertFirst(item) {
     this.tail === null ? this.tail = this.head : this.tail = this.tail.next;
@@ -150,6 +152,35 @@ class DoubleLinkedList {
   }
 }
 
+function reverseDLL(list) {
+  let start = list.head;
+  let end = list.tail;
+  while(start !== end || start.next === end){
+    const currentOne = start.value;
+    const currentTwo = end.value;
+    start.value = currentTwo;
+    end.value = currentOne;
+    start = start.next;
+    end = end.previous;
+  }
+  return list;
+}
+
+// function reverseDLL(list) {
+//   let start = list.head;
+//   let end = null;
+//   while (start !== null) {
+//     end = start.next;
+//     start.next = start.previous;
+//     start.previous = end;
+//     start = end;
+//   }
+//   end = list.head;
+//   list.head = list.tail;
+//   list.tail = end;
+// }
+
+// console.log(reverseDLL(DLL));
 
 function main() {
   let DLL = new DoubleLinkedList();
@@ -159,13 +190,15 @@ function main() {
   DLL.insertLast('Picon');
   DLL.insertLast('Sagittaron');
   DLL.insertLast('Tauron ');
-  DLL.remove('Picon');
+  // DLL.remove('Picon');
   // DLL.insertAfter('Hotdog', 'Helo');
   // DLL.insertBefore('Athena', 'Boomer');
   // display(DLL);
+  console.log(reverseDLL(DLL));
   return DLL;
+
 }
-console.log(main());
+main();
 
 
 
