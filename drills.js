@@ -4,7 +4,7 @@ const LinkedList = require('./linkedlist');
 let SLL = new LinkedList();
 SLL.insertLast('Apollo');
 SLL.insertLast('Boomer');
-SLL.insertLast('Helo');
+SLL.insertLast('Hello');
 SLL.insertLast('Husker');
 SLL.insertLast('Starbuck');
 SLL.insertLast('Tauhida');
@@ -95,5 +95,43 @@ function thirdFromEnd(linkedlist) {
 
 // 7. Middle of a list
 function middleOfList(linkedlist) {
-  
+  let fast = linkedlist.head;
+  let slow = linkedlist.head;
+  while (fast !== null && fast.next !== null) {
+    fast = fast.next.next;
+    slow = slow.next;
+  }
+  return slow;
 }
+// console.log(middleOfList(SLL));
+
+//8.
+
+let cycleList = new LinkedList();
+cycleList.insertLast('Apollo');
+cycleList.insertLast('Boomer');
+cycleList.insertLast('Hello');
+cycleList.insertLast('Husker');
+cycleList.insertLast('Starbuck');
+cycleList.insertLast('Tauhida');
+// display(cycleList);
+let node = cycleList.find('Tauhida');
+node.next = cycleList.find('Starbuck');
+
+function cycle(linkedlist) {
+  let fast = linkedlist.head;
+  let slow = linkedlist.head;
+  while (slow !== null && fast !== null && fast.next !== null) {
+    fast = fast.next.next;
+    slow = slow.next;
+    if (fast === slow) {
+      console.log(true);
+      return;
+    }
+  }
+  console.log(false);
+}
+console.log(cycle(cycleList));
+
+
+//9.
