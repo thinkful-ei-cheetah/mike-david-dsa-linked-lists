@@ -1,7 +1,9 @@
+'use strict';
+
 class _Node {
   constructor(value, next) {
-      this.value = value;
-      this.next = next;
+    this.value = value;
+    this.next = next;
   }
 }
 
@@ -62,23 +64,26 @@ class LinkedList {
     // Start at the head
     let currNode = this.head;
     // Keep track of previous
-    let previousNode = this.head;
+    let tempNode = this.head;
 
     while ((currNode !== null) && (currNode.value !== item)) {
       // Save the previous node 
-      previousNode = currNode;
+      tempNode = currNode;
       currNode = currNode.next;
     }
     if (currNode === null) {
       console.log('Item not found');
       return;
     }
-    previousNode.next = currNode.next;
+    tempNode.next = currNode.next;
     console.log('remove');
   }
 
   insertBefore(newNodeValue, targetNodeValue) {
     // if list is empty return null(end)
+    if(!this.head){
+      this.insertFirst(newNodeValue);
+    }
     if (this.head === null) {
       return null;
     }
@@ -86,9 +91,9 @@ class LinkedList {
     // if node that has value equal to the target, that node is the current
     // Node and the one before it is the previous Node
     let currentNode = this.head;
-    let previousNode = this.head;
+    let tempNode = this.head;
     while (currentNode !== null && currentNode.value !== targetNodeValue) {
-      previousNode = currentNode;
+      tempNode = currentNode;
       currentNode = currentNode.next;
     }
 
@@ -96,16 +101,61 @@ class LinkedList {
       console.log('fuck the target');
     }
 
-    previousNode.next = newNodeValue;
+    tempNode.next = new _Node(newNodeValue, tempNode.next);
   }
 
-  insertAfter() {
+  insertAfter(newNodeValue, targetNodeValue) {
+    if (!this.head) {
+      this.insertFirst(newNodeValue);
+    }
+    if (this.head === null) {
+      return null;
+    }
+    let currentNode = this.head;
+    while (currentNode !== null && currentNode.value !== targetNodeValue) {
+      currentNode = currentNode.next;
+    }
 
+    if (currentNode === null) {
+      console.log('fuck the target');
+    }
+    let newNode = new _Node(newNodeValue, currentNode.next);
+    currentNode.next = newNode;
   }
 
-  insertAt() {
-
+  insertAt(newNode, position) {
+    if (this.head === null) {
+      return null;
+    }
+    let tempNode = this.head;
+    let currentNode = this.head;
+    for(let i=0; i<position-1; i++){
+      tempNode = currentNode;
+      currentNode = currentNode.next;
+    }
+    if (currentNode === null) {
+      console.log('fuck the target');
+    }
+    tempNode.next = new _Node(newNode, currentNode);
   }
 }
 
-module.exports = LinkedList;
+
+function main() {
+  let SLL = new LinkedList();
+  SLL.insertFirst('Apollo');
+  SLL.insertLast('Boomer');
+  SLL.insertLast('Helo');
+  SLL.insertLast('Husker');
+  SLL.insertLast('Starbuck');
+  SLL.insertLast('Tauhida');
+  SLL.insertAt('Kat', 3);
+  SLL.insertAfter('Hotdog', 'Helo');
+  SLL.insertBefore('Athena', 'Boomer');
+  return SLL;
+}
+console.log(main());
+
+
+
+// module.exports = LinkedList;
