@@ -1,14 +1,30 @@
+'use strict';
 const LinkedList = require('./linkedlist');
 
-function main() {
-  let SLL = new LinkedList();
-  SLL.insertLast('Apollo');
-  SLL.insertLast('Boomer');
-  SLL.insertLast('Helo');
-  SLL.insertLast('Husker');
-  SLL.insertLast('Starbuck');
-  SLL.insertLast('Tauhida');
+let SLL = new LinkedList();
+SLL.insertLast('Apollo');
+SLL.insertLast('Boomer');
+SLL.insertLast('Helo');
+SLL.insertLast('Husker');
+SLL.insertLast('Starbuck');
+SLL.insertLast('Tauhida');
+display(SLL);
 
-  // SLL.insertBefore('Testing', 'Husker');
+function display(linklist) {
+  let node = linklist.head;
+  while (node !== null) {
+    // console.log(node.value);
+    node = node.next;
+  }
 }
-console.log(main());
+
+function size(linklist) {
+  let node = linklist.head;
+  let count = 0;
+  while (node !== null) {
+    count++;
+    node = node.next;
+  }
+  return count;
+}
+// console.log(size(SLL));
