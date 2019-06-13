@@ -63,3 +63,37 @@ function findLast(linkedlist) {
 // console.log(findLast(SLL));
 
 // 4. Mystery program
+// time complexity: Polynomial O(n^2)
+// loops through a list and checks the value of current node and
+// if they are the same, it will skips the second item and 
+// continue through the list.
+
+// 5. Reverse a list
+function reverseList(linkedlist) {
+  let currentNode = linkedlist.head;
+  let previousNode = null;
+  while (currentNode !== null) {
+    let tempNode = currentNode.next;
+    currentNode.next = previousNode;
+    previousNode = currentNode;
+    currentNode = tempNode;
+  }
+  linkedlist.head = previousNode;
+  return linkedlist;
+}
+// console.log(reverseList(SLL));
+
+// 6. 3rd from the end
+function thirdFromEnd(linkedlist) {
+  let currentNode = linkedlist.head;
+  while (currentNode.next.next.next !== null) {
+    currentNode = currentNode.next;
+  }
+  return currentNode;
+}
+// console.log(thirdFromEnd(SLL));
+
+// 7. Middle of a list
+function middleOfList(linkedlist) {
+  
+}

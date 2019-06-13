@@ -163,13 +163,13 @@ function main() {
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
   SLL.insertLast('Tauhida');
-  SLL.insertAt('Kat', 3);
-  SLL.insertAfter('Hotdog', 'Helo');
-  SLL.insertBefore('Athena', 'Boomer');
+  // SLL.insertAt('Kat', 3);
+  // SLL.insertAfter('Hotdog', 'Helo');
+  // SLL.insertBefore('Athena', 'Boomer');
   // display(SLL);
-  return SLL;
+  // return SLL;
 }
-console.log(main());
+// console.log(main());
 //console.log(display());
 
 
